@@ -1,0 +1,51 @@
+<?php
+    $title = 'Editar Produto';
+    $this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'products',
+        array(
+            'action' => 'edit',
+            'id'     => $this->id,
+        )
+    ));
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('id'));
+?> 
+<div class="formulario">
+    <div class="form-group input-formulario"> 
+        <label style="text-aling:left">Nome do Produto</label>
+        <br>
+        <?php  
+        echo $this->formRow($form->get('nome_produto'));
+        ?> 
+    </div>
+    <div class="form-group input-formulario"> 
+        <label style="text-aling:left">Valor do Produto</label>
+        <br>
+        <?php  echo $this->formRow($form->get('valor_produto'));
+        ?> 
+    </div>
+
+    <div class="form-group input-formulario"> 
+        <label style="text-aling:left">Categoria do Produto</label>
+        <br>
+        <?php
+        echo $this->formRow($form->get('id_categoria_produto'));
+        ?> 
+    </div>
+
+    <div class="form-group input-formulario"> 
+        <?php  echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+
+</div>
+<?php 
+    echo $this->form()->closeTag();

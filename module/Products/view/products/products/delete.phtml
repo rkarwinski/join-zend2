@@ -1,0 +1,27 @@
+<div class="box-deletar">
+    <?php
+        $title = 'Deletar Produto';
+        $this->headTitle($title);
+    ?>
+
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+    <div class="deletar">
+    <p> Você tem certeza que deseja excluir o Produto 
+        '<?php echo $this->escapeHtml($products->nome_produto); ?>' ?
+    </p>
+
+    <?php
+        $url = $this->url('products', array('action' => 'delete','id' => $this->id,));
+    ?>
+
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input type="hidden" name="id" value="<?php echo (int) $products->id; ?>" />
+            <input class="btn btn-danger" type="submit" name="del" value="Yes" />
+            <input class="btn btn-secondary" type="submit" name="del" value="No" />
+        </div>
+    </form>
+
+    </div>
+</div>

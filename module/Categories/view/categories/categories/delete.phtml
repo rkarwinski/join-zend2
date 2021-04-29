@@ -1,0 +1,27 @@
+<div class="box-deletar">
+
+    <?php
+        $title = 'Deletar Categoria';
+        $this->headTitle($title);
+    ?>
+    
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+    <div class="deletar">
+        <p> Você tem certeza que deseja excluir a Categoria 
+            '<?php echo $this->escapeHtml($categories->nome_categoria); ?>' ?
+        </p>
+
+        <?php
+            $url = $this->url('categories', array('action' => 'delete', 'id'=> $categories->id_categoria_planejamento));
+        ?>
+
+        <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input type="hidden" name="id" value="<?php echo (int) $categories->id_categoria_planejamento; ?>" />
+            <input class="btn btn-danger" type="submit" name="del" value="Yes" />
+            <input class="btn btn-secondary" type="submit" name="del" value="No" />
+        </div>
+        </form>
+    </div>
+</div>

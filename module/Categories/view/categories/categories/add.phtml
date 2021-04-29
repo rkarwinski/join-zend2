@@ -1,0 +1,34 @@
+<?php
+    $title = 'Cadastrar Nova Categoria';
+    $this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('categories', array('action' => 'add')));
+    $form->prepare();
+    echo $this->form()->openTag($form);
+?>
+
+<div class="formulario">
+
+    <?php
+        echo $this->formHidden($form->get('id_categoria_planejamento'));
+    ?>
+
+    <div class="form-group input-formulario"> 
+        <label style="text-aling:left">Categoria</label>
+        <br>
+        <?php
+            echo $this->formRow($form->get('nome_categoria'));
+        ?>
+    </div>
+
+    <div class="form-group input-formulario"> 
+        <?php
+            echo $this->formSubmit($form->get('submit'));
+            echo $this->form()->closeTag(); 
+        ?>
+    </div>

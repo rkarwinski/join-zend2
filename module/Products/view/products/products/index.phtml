@@ -1,0 +1,37 @@
+<?php
+    $title = 'Listar Produtos';
+    $this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>
+    <a href="<?php echo $this->url('products', array('action'=>'add'));?>" class="btn btn-primary btn-adicionar" role="button" >Adicionar Produto</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Id</th>
+    <th>Nome do Produto</th>
+    <th>Categoria</th>
+    <th>Valor Unitario</th>
+    <th>Data de Cadastro</th>
+    <th>Ação</th>
+</tr>
+<?php foreach ($products as $product) : ?>
+
+<tr>
+    <td><?php echo $this->escapeHtml($product->id);?></td>
+    <td><?php echo $this->escapeHtml($product->nome_produto);?></td>
+    <td><?php echo $this->escapeHtml($product->categoria);?></td>
+    <td><?php echo 'R$ ' . $this->escapeHtml($product->valor_produto);?></td>
+    <td><?php echo $this->escapeHtml($product->data_cadastro);?></td>
+    <td>
+        <a class="btn btn-warning" role="button" href="<?php echo $this->url('products',
+            array('action'=>'edit', 'id' => $product->id));?>">Edit</a>
+        <a class="btn btn-danger" role="button" href="<?php echo $this->url('products',
+            array('action'=>'delete', 'id' => $product->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
